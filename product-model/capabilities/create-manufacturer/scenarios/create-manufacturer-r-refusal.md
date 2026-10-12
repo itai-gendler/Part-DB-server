@@ -1,0 +1,59 @@
+---
+{
+  "kind": "validation",
+  "routes": {
+    "route": "REST"
+  },
+  "steps": [
+    {
+      "text": "The caller requests create maker record through this contract.",
+      "kind": "actor",
+      "actor": "api-client",
+      "entities": [],
+      "contexts": {
+        "route": {
+          "place": "rest-api"
+        }
+      }
+    },
+    {
+      "text": "The Product stops the requested create maker record operation at its actual refusal boundary.",
+      "kind": "product",
+      "actor": "api-client",
+      "entities": [],
+      "contexts": {
+        "route": {
+          "place": "rest-api"
+        }
+      }
+    }
+  ],
+  "references": [
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Entity/Parts/Manufacturer.php"
+    },
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Controller/AdminPages/ManufacturerController.php"
+    },
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Controller/AdminPages/BaseAdminController.php"
+    }
+  ]
+}
+---
+
+# Create manufacturer — REST refusal
+
+## Trigger
+
+The caller requests create manufacturer and reaches its closed entry or disabled-control result.
+
+## Outcome
+
+The requested create manufacturer result is withheld; no accepted change or removal of the requested subject is produced.

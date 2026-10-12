@@ -1,0 +1,33 @@
+---
+{
+  "availability": [
+    {
+      "place": "web::public"
+    },
+    {
+      "place": "web::authenticated"
+    }
+  ],
+  "references": [
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Entity/LogSystem/AbstractLogEntry.php"
+    },
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Controller/LogController.php"
+    },
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Services/LogSystem/TimeTravel.php"
+    }
+  ]
+}
+---
+
+# Browse part history
+
+History and supported reconstructed historical information disclosed

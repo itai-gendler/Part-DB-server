@@ -1,0 +1,19 @@
+{
+  "scenarioKinds": [
+    {
+      "id": "primary",
+      "name": "Primary",
+      "description": "The requested operation produces its established result with valid input."
+    },
+    {
+      "id": "validation",
+      "name": "Validation",
+      "description": "The requested operation is refused or its input is rejected at a source-established boundary."
+    },
+    {
+      "id": "edge",
+      "name": "Edge",
+      "description": "An empty result, conflict, unusual boundary or dependency failure produces its established observable outcome."
+    }
+  ]
+}

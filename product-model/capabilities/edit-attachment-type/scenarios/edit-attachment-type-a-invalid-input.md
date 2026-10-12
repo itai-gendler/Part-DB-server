@@ -1,0 +1,59 @@
+---
+{
+  "kind": "validation",
+  "routes": {
+    "route": "Authenticated Web"
+  },
+  "steps": [
+    {
+      "text": "The caller submits the failing input: The submitted sibling name or hierarchy violates the declared constraints.",
+      "kind": "actor",
+      "actor": "user",
+      "entities": [],
+      "contexts": {
+        "route": {
+          "place": "web::authenticated::authenticated-attachment-type"
+        }
+      }
+    },
+    {
+      "text": "The Product retains the form’s validation errors for the submitted sibling name or hierarchy violates the declared constraints. The submitted write is not accepted.",
+      "kind": "product",
+      "actor": "user",
+      "entities": [],
+      "contexts": {
+        "route": {
+          "place": "web::authenticated::authenticated-attachment-type"
+        }
+      }
+    }
+  ],
+  "references": [
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Entity/Attachments/AttachmentType.php"
+    },
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Controller/AdminPages/AttachmentTypeController.php"
+    },
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Controller/AdminPages/BaseAdminController.php"
+    }
+  ]
+}
+---
+
+# Edit attachment type — Authenticated Web invalid input
+
+## Trigger
+
+The submitted sibling name or hierarchy violates the declared constraints.
+
+## Outcome
+
+The submitted sibling name or hierarchy violates the declared constraints. No successful edit attachment type result is asserted.

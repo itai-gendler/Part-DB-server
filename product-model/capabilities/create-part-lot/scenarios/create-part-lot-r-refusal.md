@@ -1,0 +1,54 @@
+---
+{
+  "kind": "validation",
+  "routes": {
+    "route": "REST"
+  },
+  "steps": [
+    {
+      "text": "The caller requests create stock record through this contract.",
+      "kind": "actor",
+      "actor": "api-client",
+      "entities": [],
+      "contexts": {
+        "route": {
+          "place": "rest-api"
+        }
+      }
+    },
+    {
+      "text": "The Product stops the requested create stock record operation at its actual refusal boundary.",
+      "kind": "product",
+      "actor": "api-client",
+      "entities": [],
+      "contexts": {
+        "route": {
+          "place": "rest-api"
+        }
+      }
+    }
+  ],
+  "references": [
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Entity/Parts/PartLot.php"
+    },
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Controller/PartController.php"
+    }
+  ]
+}
+---
+
+# Create part lot — REST refusal
+
+## Trigger
+
+The caller requests create part lot and reaches its closed entry or disabled-control result.
+
+## Outcome
+
+The requested create part lot result is withheld; no accepted change or removal of the requested subject is produced.

@@ -1,0 +1,34 @@
+---
+{
+  "availability": [
+    {
+      "place": "web::public"
+    },
+    {
+      "place": "web::authenticated"
+    },
+    {
+      "place": "rest-api"
+    },
+    {
+      "place": "mcp"
+    }
+  ],
+  "references": [
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Entity/Parameters/AbstractParameter.php"
+    },
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Controller/PartController.php"
+    }
+  ]
+}
+---
+
+# Create parameter
+
+Parameter added to supported owner

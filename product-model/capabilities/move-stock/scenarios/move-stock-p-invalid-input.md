@@ -1,0 +1,74 @@
+---
+{
+  "kind": "validation",
+  "routes": {
+    "route": "Public Web"
+  },
+  "steps": [
+    {
+      "text": "The caller submits the failing input: A nonpositive movement quantity is supplied; no accepted transfer is produced.",
+      "kind": "actor",
+      "actor": "user",
+      "entities": [],
+      "contexts": {
+        "route": {
+          "place": "web::public::public-part"
+        }
+      }
+    },
+    {
+      "text": "The Product reports the nonpositive quantity warning and returns to the supplied destination or existing information page before invoking the adjustment helper.",
+      "kind": "product",
+      "actor": "user",
+      "entities": [],
+      "contexts": {
+        "route": {
+          "place": "web::public::public-part"
+        }
+      }
+    }
+  ],
+  "references": [
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Entity/Parts/PartLot.php"
+    },
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Controller/PartController.php"
+    },
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Services/Parts/PartLotWithdrawAddHelper.php"
+    },
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Security/Voter/PartLotVoter.php"
+    },
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/State/Mcp/AbstractPartLotStockProcessor.php"
+    },
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Form/Part/PartLotType.php"
+    }
+  ]
+}
+---
+
+# Move stock — Public Web invalid input
+
+## Trigger
+
+A nonpositive movement quantity is supplied; no accepted transfer is produced.
+
+## Outcome
+
+The quantity warning is reported, the helper is not invoked and no accepted stock adjustment is saved.

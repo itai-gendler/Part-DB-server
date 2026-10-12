@@ -1,0 +1,93 @@
+---
+{
+  "kind": "primary",
+  "routes": {
+    "route": "Authenticated Web"
+  },
+  "steps": [
+    {
+      "text": "The caller submits valid replacement values for Name, Comment on the selected record.",
+      "kind": "actor",
+      "actor": "user",
+      "entities": [],
+      "contexts": {
+        "route": {
+          "place": "web::authenticated::authenticated-measurement-unit"
+        }
+      }
+    },
+    {
+      "text": "The Product consults the resolved User permission configuration.",
+      "kind": "product",
+      "actor": "user",
+      "entities": [
+        {
+          "entity": "user",
+          "effect": "reads",
+          "facts": [
+            "Permission overrides"
+          ]
+        }
+      ],
+      "contexts": {
+        "route": {
+          "place": "web::authenticated::authenticated-measurement-unit"
+        }
+      }
+    },
+    {
+      "text": "The Product saves the supplied Measurement unit information through the implemented write.",
+      "kind": "product",
+      "actor": "user",
+      "entities": [
+        {
+          "entity": "measurement-unit",
+          "effect": "changes",
+          "facts": [
+            "Name",
+            "Comment",
+            "Modified at"
+          ]
+        }
+      ],
+      "contexts": {
+        "route": {
+          "place": "web::authenticated::authenticated-measurement-unit"
+        }
+      }
+    }
+  ],
+  "references": [
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Entity/Parts/MeasurementUnit.php"
+    },
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Controller/AdminPages/MeasurementUnitController.php"
+    },
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Controller/AdminPages/BaseAdminController.php"
+    },
+    {
+      "kind": "code",
+      "role": "implementation",
+      "target": "src/Entity/Base/TimestampTrait.php"
+    }
+  ]
+}
+---
+
+# Edit measurement unit — Authenticated Web primary
+
+## Trigger
+
+The caller submits valid replacement values for Name, Comment on the selected record.
+
+## Outcome
+
+Supplied Measurement unit changes are saved.
